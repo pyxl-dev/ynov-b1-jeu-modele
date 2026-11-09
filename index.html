@@ -3,13 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Attrape-fruits</title>
+  <meta name="theme-color" content="#05030f">
+  <title>Pluie de Néon</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Attrape-fruits</h1>
-  <canvas id="jeu" width="400" height="500"></canvas>
-  <p>Flèches gauche et droite, ou souris et doigt, pour déplacer le panier.</p>
-  <script src="game.js"></script>
+  <main class="page">
+    <header class="barre">
+      <span class="barre-nom">PLUIE DE NÉON</span>
+      <button id="bouton-son" class="bouton-son" type="button" aria-pressed="true">SON ACTIF</button>
+    </header>
+
+    <section class="scene" id="scene" data-etat="titre">
+      <canvas id="jeu" width="480" height="720" aria-label="Zone de jeu"></canvas>
+
+      <div class="hud">
+        <div class="hud-bloc">
+          <span class="etiquette">SCORE</span>
+          <strong id="score" class="score">0</strong>
+          <span id="niveau" class="niveau">NIVEAU 1</span>
+        </div>
+        <div id="combo" class="combo">
+          <span id="combo-valeur">x1</span>
+          <div class="combo-jauge"><i id="combo-jauge"></i></div>
+        </div>
+        <div class="hud-bloc hud-droite">
+          <span class="etiquette">VIES</span>
+          <div class="vies" id="vies" aria-label="Vies restantes">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+
+      <div id="ecran-titre" class="ecran">
+        <p class="sur-titre">JEU MODÈLE / BACHELOR 1</p>
+        <h1 class="titre">PLUIE<br>DE NÉON</h1>
+        <p class="but">Attrape les cristaux.<br>Évite les bombes.</p>
+        <button id="bouton-jouer" class="bouton-principal" type="button">JOUER</button>
+        <p class="record-titre">RECORD <strong id="record-titre">0</strong></p>
+        <p class="commandes">Flèches ou A et D<br>Souris ou doigt</p>
+      </div>
+
+      <div id="ecran-fin" class="ecran cache">
+        <p class="sur-titre">PARTIE TERMINÉE</p>
+        <p id="badge-record" class="badge cache">NOUVEAU RECORD</p>
+        <p class="etiquette-fin">SCORE</p>
+        <p id="fin-score" class="score-fin">0</p>
+        <div class="fin-ligne">
+          <span>RECORD</span>
+          <strong id="fin-record">0</strong>
+        </div>
+        <button id="bouton-rejouer" class="bouton-principal" type="button">REJOUER</button>
+        <button id="bouton-menu" class="bouton-secondaire" type="button">MENU</button>
+        <p class="commandes">Entrée ou Espace pour rejouer</p>
+      </div>
+    </section>
+
+    <footer class="pied">
+      <span>Attrape les cristaux, évite les bombes, enchaîne pour multiplier les points.</span>
+    </footer>
+  </main>
+  <script src="config.js"></script>
+  <script src="audio.js"></script>
+  <script src="effets.js"></script>
+  <script src="dessin.js"></script>
+  <script src="jeu.js"></script>
 </body>
 </html>
